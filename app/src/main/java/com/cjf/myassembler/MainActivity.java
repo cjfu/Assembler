@@ -1,12 +1,11 @@
 package com.cjf.myassembler;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cjf.assemler.Assembler;
-import com.cjf.assemler.AssemblerImpl;
 import com.cjf.assemler.DataStream;
 import com.cjf.assemler.OnOption;
 
