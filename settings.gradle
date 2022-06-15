@@ -1,0 +1,3 @@
+include ':assemler'
+include ':app'
+rootProject.name = "MyAssembler"
