@@ -20,17 +20,19 @@ public class MainActivity extends AppCompatActivity {
         Assembler assembler = new Assembler();
 
         assembler
-                .setWorker((OnOption<String>) (self, dataStream) -> {
-                    Log.e(TAG, "onOption1: " + dataStream.get());
-                    self.send(new DataStream<Integer>().set(2));
+                .setOption((OnOption<String>) (self, dataStream) -> {
+                    String str = dataStream.get();
+                    Log.e(TAG, "onOption1: " + str);
+                    self.send(new DataStream<Integer>().set(Integer.parseInt(str + "0")));
                 })
                 .next(new Assembler())
-                .setWorker((OnOption<Integer>) (self, dataStream) -> {
-                    Log.e(TAG, "onOption2: " + dataStream.get());
-                    self.send(new DataStream<Float>().set(12.1f));
+                .setOption((OnOption<Integer>) (self, dataStream) -> {
+                    int num = dataStream.get();
+                    Log.e(TAG, "onOption2: " + num);
+                    self.send(new DataStream<Float>().set(num + 0.5f));
                 })
                 .next(new Assembler())
-                .setWorker((OnOption<Float>) (self, dataStream) -> {
+                .setOption((OnOption<Float>) (self, dataStream) -> {
                     Log.e(TAG, "onOption3: " + dataStream.get());
                 });
 

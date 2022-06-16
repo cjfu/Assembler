@@ -19,15 +19,14 @@ public class Assembler implements AssemblerImpl {
     }
 
     @Override
-    public AssemblerImpl setWorker(OnOption<?> onOption) {
+    public AssemblerImpl setOption(OnOption<?> onOption) {
         this.onOption = onOption;
         return this;
     }
 
-    @Override
     public void work() {
-        if (onOption!=null) {
-            onOption.onOption(this,sourceData);
+        if (onOption != null) {
+            onOption.onOption(this, sourceData);
         }
     }
 
@@ -35,7 +34,7 @@ public class Assembler implements AssemblerImpl {
     public void send(DataStream<?> resultData) {
         if (next != null) {
             next.receive(resultData);
-        }else {
+        } else {
             //到达最后一层
         }
     }
